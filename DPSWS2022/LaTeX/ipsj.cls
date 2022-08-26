@@ -1,0 +1,1 @@
+ipsj/ipsj.cls
