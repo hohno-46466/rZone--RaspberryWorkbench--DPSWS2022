@@ -2,11 +2,11 @@
   %% IoTデバイスに電源と時刻と例外を提供する RaspberryCom*PoTE の設計実装
   %% %% と使われなくなった情報コンセントの活用事例
   IoTデバイスに電源と環境情報と例外発生を供給する方式とこれを用いた開発支援環境の提案\\
-  ーRaspberry Com*PoTE と Raspberry Workbench の設計と実装ー
+  ーRaspberry Com*PoTE を用いた Raspberry Workbench の設計と実装ー
 }
 
 \etitle{
-  Design and Implementation of RaspberryCom*PoTE and Raspberry Workbench to Supply IoT Devices Electrical  Power, Environmental Information, and Exceptions
+  Design and Implementation of Raspberry Workbench to Supply IoT Devices Electrical  Power, Environmental Information, and Exceptions by using RaspberryCom*PoTE
 }
 
 \affiliate{Kanazawa}{金沢大学 総合メディア基盤センター\\
@@ -21,10 +21,12 @@ Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan}
 
 \begin{abstract}
  一般に，IoTデバイスを運用するには，安定した電源供給が必要である．
- また，各デバイスに正確な時刻を共有させたい場合が多い．
- さらに、多数のIoTデバイスを運用する場合には，特にその開発時においては遠隔からの一斉再起動を行いたい場合が少なくない．
- そこで，多数のIoTデバイスに対し，外部から「電源」「時刻等の環境情報」さらに「例外状態の発生」を安定して提供するしくみを設計し，これを RaspberryCom*PoTE（ラズベリー・コンポート）と名付けた．
+ また，各デバイス間で正確な時刻を共有させたい場合が多い．
+ さらに、多数のIoTデバイスを運用する場合には，特にその開発時や運用初期においては遠隔からの一斉再起動を行いたい場合が少なからずある．
+ そこで，多数のIoTデバイスに対し，外部から「電源」「時刻等の環境情報」さらに「例外状態の発生通知」を安定して提供するしくみを設計し，これを RaspberryCom*PoTE（ラズベリー・コンポート）と名付けた．
  本報では，この方式の概要と，この方式を用いたIoTデバイス開発環境（Raspberry Workbench）について報告する.
+
+
 
 %% 一般に，IoTデバイスを長期間安定して運用するには，安定した電源供給が必要である．
 %% また，著者が多数のIoTデバイスを運用する場合には，
