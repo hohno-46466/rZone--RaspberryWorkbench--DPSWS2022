@@ -13,4 +13,8 @@
 #
 .dummy4GHCG.tsv
 .README.md-tmp*
+#
+*.log
+*.aux
+*.dvi
 # -EOF-
