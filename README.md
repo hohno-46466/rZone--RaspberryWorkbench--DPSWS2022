@@ -2,7 +2,7 @@
 
 Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
 
-    ./rZone--RaspberryWorkbench--DPSWS2022
+     ./rZone--RaspberryWorkbench--DPSWS2022
      ├──  ==PrivateRepository==
      ├──  README.md
      ├──  README.md.old
@@ -38,9 +38,6 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      │       ├──  desktop.ini
      │       ├──  doit-wsl.sh
      │       ├──  doit.sh
-     │       ├──  dpsws2022-RaspberryWorkbench.aux
-     │       ├──  dpsws2022-RaspberryWorkbench.dvi
-     │       ├──  dpsws2022-RaspberryWorkbench.log
      │       ├──  dpsws2022-RaspberryWorkbench.pdf
      │       ├──  dpsws2022-RaspberryWorkbench.tex
      │       ├──  ebibsample.bib
@@ -62,7 +59,7 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
          │   └──  UTF8/
          └──  ipsj_v4.zip
      
-     19 directories, 39 files (Wed Sep  7 23:52:41 JST 2022)
+     19 directories, 36 files (Thu Sep  8 22:33:18 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/rZone--RaspberryWorkbench--DPSWS2022
