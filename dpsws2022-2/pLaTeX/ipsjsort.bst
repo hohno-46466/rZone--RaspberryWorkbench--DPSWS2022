@@ -1,1 +1,0 @@
-ipsj/ipsjsort.bst
