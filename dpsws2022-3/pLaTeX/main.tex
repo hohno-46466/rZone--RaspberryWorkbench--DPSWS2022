@@ -1,3 +1,4 @@
+
 \title{
   %% IoTデバイスに電源と時刻と例外を提供する RaspberryCom*PoTE の設計実装
   %% %% と使われなくなった情報コンセントの活用事例
@@ -5,15 +6,16 @@
   \huge{ーRaspberry Com*PoTE を用いた Raspberry Workbench の設計と実装ー}
 }
 
-\etitle{
-  Design and Implementation of Raspberry Workbench to Supply IoT Devices Electrical  Power, Environmental Information, and Exceptions by using RaspberryCom*PoTE
-}
-
 \affiliate{Kanazawa}{金沢大学 学術メディア創成センター\\
 Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan}
-%% \affiliate{USP}{ユニバーサル・シェル・プログラミング研究所}
 
 \author{大野 浩之}{Hiroyuki Ohno}{Kanazawa}[hohno@staff.kanazawa-u.ac.jp]
+
+
+%% \etitle{
+%%   Design and Implementation of Raspberry Workbench to Supply IoT Devices Electrical  Power, Environmental Information, and Exceptions by using RaspberryCom*PoTE
+%% }
+
 
 %% ---------------------------------------------------------
 %% 概要（90%）(0.75p タイトルと概要）
@@ -25,8 +27,6 @@ Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan}
  さらに，多数のIoTデバイスを運用する場合，特にその開発時や運用初期においては，遠隔から指示で一斉再起動を行いたい場合がある．
  そこで，多数のIoTデバイスに対し，外部から「電源」「時刻等の情報（環境情報）」さらに「例外状態発生の通知」を安定して提供するしくみを設計し，これを {\tt Raspberry\-Com*PoTE}（ラズベリー・コンポート）と名付けた．
  本報では{\tt Raspberry\-Com*PoTE}の概要と，これを用いたIoTデバイス開発環境（{\tt Raspberry\-Workbench}(ラスベリー・ワークベンチ))について報告する.
-
-
 %% 一般に，IoTデバイスを長期間安定して運用するには，安定した電源供給が必要である．
 %% また，著者が多数のIoTデバイスを運用する場合には，
 %% 用途と状況にもよるが遠隔から強制的に一斉再起動を行いたい場合が多い．
@@ -35,24 +35,26 @@ Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan}
 %% 本報告では，大学の研究室程度の規模の室内環境での運用を前提とした{\tt Raspberry\-Com*PoTE}の設計実装とその運用について報告する．
 \end{abstract}
 
-\begin{jkeyword}
-IoT, ものづくり, ものグラミング, Raspberry Pi, Arduino, POSIX, POSIX中心主義, 有線IoT
-\end{jkeyword}
+%% \maketitle
+
+%% \begin{jkeyword}
+%% IoT, ものづくり, ものグラミング, Raspberry Pi, Arduino, POSIX, POSIX中心主義, 有線IoT
+%% \end{jkeyword}
 
 
-\begin{eabstract}
-Stable power supply is considered necessary for stable operation of IoT devices for a long period of time.
-Depending on the application, it may also be necessary to enable a forced restart from a remote location.
-In addition, when operating a large number of IoT devices, it may be necessary to supply an accurate time.
-Therefore, we designed a system that provides power and time from outside to IoT devices and provides stable notification of exceptional conditions. We named it {\tt Raspberry\-Com*PoTE}.
-In this report, we report on the design, implementation and operation of {\tt Raspberry\-Com*PoTE} on the premise of operating in an indoor environment of the size of a university laboratory.
- Furthermore, we also report on the IoT device development environment ({\tt Raspberry\-Workbench}) using {\tt Raspberry\-Com*PoTE}.
+%% \begin{eabstract}
+%% Stable power supply is considered necessary for stable operation of IoT devices for a long period of time.
+%% Depending on the application, it may also be necessary to enable a forced restart from a remote location.
+%% In addition, when operating a large number of IoT devices, it may be necessary to supply an accurate time.
+%% Therefore, we designed a system that provides power and time from outside to IoT devices and provides stable notification of exceptional conditions. We named it {\tt Raspberry\-Com*PoTE}.
+%% In this report, we report on the design, implementation and operation of {\tt Raspberry\-Com*PoTE} on the premise of operating in an indoor environment of the size of a university laboratory.
+%%  Furthermore, we also report on the IoT device development environment ({\tt Raspberry\-Workbench}) using {\tt Raspberry\-Com*PoTE}.
+%% 
+%% \end{eabstract}
 
-\end{eabstract}
-
-\begin{ekeyword}
-IoT, Mono-gramming, Monogramming, Raspberry Pi, Arduino, POSIX, POSIX centrics approach, Wired IoT
-\end{ekeyword}
+%% \begin{ekeyword}
+%% IoT, Mono-gramming, Monogramming, Raspberry Pi, Arduino, POSIX, POSIX centrics approach, Wired IoT
+%% \end{ekeyword}
 
 \maketitle
 
@@ -348,25 +350,40 @@ IoTデバイス同士やIoTデバイスと計測制御用コンピュータが�
 
 %%上述の方針に基づいて設計実装した {\tt Raspberry\-Com*PoTE} の
 
-全体構成概要図（図\ref{RaspberryComPoTE-X}）に示したように
+全体構成概要図（図\ref{RaspberryComPoTE-X1}）に示したように
  {\tt Raspberry\-Com*PoTE}は +V, D+, D-, GND の 4線からなるバス型で通信方式は RS-485 に準じているが，その物理層は給電系（電源周り）を強化し，{\tt Raspberry\-Com*PoTE}に接続する個々の IoT デバイスへの電力供給も可能にしている．
  {\tt Raspberry\-Com*PoTE}では，次項で述べるように供給電圧を意図的に不安定にすることで例外状態の発生を通知するので，個々の IoT デバイスは受電後に降圧型または昇降圧型の安定化電源モジュールを用いて電源電圧の安定化を行い，個々に必要な電源（たとえば +5V や +3.3V）を確保する．
 
-
 \vspace*{-5zh}
-\begin{figure}[H]
-\centering
-%% \includegraphics[width=5cm]{figspics/henoheno.png}
-\includegraphics[width=8cm]{figspics/RaspberryComPoTE_figX2.png}
-\caption{{RaspberryComPoTE}全体構成概要}
-\label{RaspberryComPoTE-X}
+\begin{figure}[h]
+\centering%% \includegraphics[width=5cm]{figspics/henoheno.png}
+\includegraphics[width=9cm]{figspics/RaspberryComPoTE_figX2.png}
+\caption{{\tt Raspberry\-Com*PoTE}全体構成概要}
+\label{RaspberryComPoTE-X1}
 \end{figure}
-\vspace{-1zh}
+\vspace*{-1zh}
 
 %% （※メモ：図）ここに全体構成図(図\ref{RaspberryComPoTE})を入れる
 %%x%%
+
+2019年10月時点での{\tt Raspberry\-Com*PoTE}を用いた IoTデバイス開発の一例を図\ref{RaspberryComPoTE-X2}に示す．
+このような形態での開発が常に実施できると利便性が高いという経験が，{\tt Raspberry\-Workbench}という開発環境を発想するきっかけとなった．
+
+%% \vspace*{-1zh}
+\begin{figure}[h]
+\centering
+%% \includegraphics[width=5cm]{figspics/henoheno.png}
+\includegraphics[width=9cm]{figspics/RaspberryWorkbench3.png}
+\caption{{\tt Raspberry\-Com*PoTE}の実装例}
+\label{RaspberryComPoTE-X2}
+\end{figure}
+%% \vspace*{-1zh}
+
 以下ではここで示した3つの系，すなわち電源供給系，例外状態通知系（送出系＋検出系），環境情報提供系の設計と実装について述べる．
+
 %%x%%
+
+
 
 \subsubsection{電源供給系+例外状態送出系}
 %% \vspace{-0.5zh}
@@ -377,7 +394,7 @@ IoTデバイス同士やIoTデバイスと計測制御用コンピュータが�
 %% 次項で述べるように
 2017年方式にも存在するこの電圧遷移機構を伴う電源供給機能は，2017年方式と同様に「非安定電源機能」と呼んでいる．
 非安定電源機能は，直流安定化電源装置の出力電圧を外部から意図的に変動させる機能である．
-この電位の変動は，受電側（{\tt Raspberry\-Com*PoTE}を利用する各IoTデバイス側．図\ref{RaspberryComPoTE-X}にあっては IoTデバイス 01..NN）においては，
+この電位の変動は，受電側（{\tt Raspberry\-Com*PoTE}を利用する各IoTデバイス側．図\ref{RaspberryComPoTE-X1}にあっては IoTデバイス 01..NN）においては，
 4芯ケーブルを経由することで生じる電圧降下も加わって相応に変動（低下）した状態となるが，重要なのは二つの状態に対応した電位そのものではなくその電位差である．
 この電位差は4芯ケーブルで発生する電圧効果の影響を受けず，ほとんどの利用形態で送電側と受電側とでほぼ同じになる
 \footnote{高電位状態での供給電流を $\text{I}_\text{H}$ ，
@@ -399,15 +416,15 @@ IoTデバイス同士やIoTデバイスと計測制御用コンピュータが�
 
 現時点での電源供給と例外状態の送出を担う系の実装を図\ref{hohno:RaspberryComPoTE-Po1}に示す．\\
 %%x%%
-\vspace{-1zh}
-\begin{figure}%%[H]
+%% \vspace*{-1zh}
+\begin{figure}[h]
 \centering
 %%\includegraphics[width=5cm]{figspics/henoheno.jpeg}
-\includegraphics[width=7.0cm]{figspics/RaspberryComPoTE_figY.png}
+\includegraphics[width=8.5cm]{figspics/RaspberryComPoTE_figY.png}
 \caption{電源供給・例外状態送出系の実装例}
 \label{hohno:RaspberryComPoTE-Po1}
 \end{figure}
-\vspace{-1zh}
+%% \vspace*{-1zh}
 %%x%%
 
 各IoTデバイス側に用意する昇降圧型の電圧レギュレータには，4.5〜18Vの入力電圧を許容する3W級絶縁型昇降圧型DC-DCコンバータの MCWI03-12S05\cite{data:MCWI03-12S05}を採用し，最終的には安定した DC5V 最大600mA 供給している．
@@ -473,15 +490,15 @@ IoTデバイス同士やIoTデバイスと計測制御用コンピュータが�
 
 現時点での例外状態検出系の実装を図\ref{hohno:RaspberryComPoTE-W}に示す．\\
 
-\vspace{-1zh}
-\begin{figure}%%[H]
+%% \vspace*{-1zh}
+\begin{figure}[h]
 \centering
 %% \includegraphics[width=5cm]{figspics/henoheno.jpeg}
-\includegraphics[width=7.0cm, angle=270]{figspics/RaspberryComPoTE_figW.png}
+\includegraphics[width=8.5cm, angle=270]{figspics/RaspberryComPoTE_figW.png}
 \caption{例外状態検出系の実装例（写真中央の上半分）}
 \label{hohno:RaspberryComPoTE-W}
 \end{figure}
-\vspace{-1zh}
+%% \vspace*{-1zh}
 %%x%%
 %%x%%（※メモ：図）ここにリセット・割り込み回路の図（ブロック図（と回路図？））（図\ref{hohno:RaspberryComPoTE-E}）を入れる
 
@@ -511,7 +528,8 @@ IoTデバイスをできるだけ小規模に作ろうとした場合，NTPプ�
 %%\subsubsubsection{環境情報提供サーバの時刻提供機能}
 
 %% \vspace{0.5zh}
-\noindent{\large{\textgt{\textbf{\underline{・環境情報提供サーバの時刻提供機能}}}}} \par
+%% \noindent{\large{\textgt{\textbf{\underline{・環境情報提供サーバの時刻提供機能}}}}} \par
+\noindent{\large{\textgt{\textbf{・環境情報提供サーバの時刻提供機能}}}} \par
 %% \vspace{0.5zh}
 
 時刻情報の提供と取得は以下のように行う．
@@ -536,15 +554,15 @@ IoTデバイスをできるだけ小規模に作ろうとした場合，NTPプ�
 プログラムは Arduino開発環境上で C++言語を用いて実装した（図\ref{hohno:RaspberryComPoTE-Z}）．\\
 
 
-\vspace{-1zh}
-\begin{figure}%%[H]
+%% \vspace*{-1zh}
+\begin{figure}[h]
 \centering
 %% \includegraphics[width=5cm]{figspics/henoheno.jpeg}
-\includegraphics[width=7.0cm, angle=270]{figspics/RaspberryComPoTE_figZ.png}
+\includegraphics[width=8.5cm, angle=270]{figspics/RaspberryComPoTE_figZ.png}
 \caption{環境情報提供系の実装例}
 \label{hohno:RaspberryComPoTE-Z}
 \end{figure}
-\vspace{-1zh}
+%% \vspace*{-1zh}
 %%x%%
 %%x%% （※メモ：図）環境情報サーバの構成（図\ref{hohno:RaspberryComPoTE-T}）
 
@@ -552,7 +570,8 @@ IoTデバイスをできるだけ小規模に作ろうとした場合，NTPプ�
 %% \subsubsubsection{環境情報提供サーバが提供する時刻との同期方法}
 
 %% \vspace{0.5zh}
-\noindent{\large{\textgt{\textbf{\underline{・環境情報提供サーバが提供する時刻との同期方法}}}}} \par
+%% \noindent{\large{\textgt{\textbf{\underline{・環境情報提供サーバが提供する時刻との同期方法}}}}} \par
+\noindent{\large{\textgt{\textbf{・環境情報提供サーバが提供する時刻との同期方法}}}} \par
 %% \vspace{0.5zh}
 
 %% （※メモ）時刻情報の提供方法，受け取った側の同期方法
@@ -718,12 +737,18 @@ IoTデバイスをできるだけ小規模に作ろうとした場合，NTPプ�
 {\tt Raspberry\-Workbench} の初期型は，国内で開催されたものづくり愛好者のイベントで2019年末頃から何度か図\ref{RaspberryWorkbench}のような動態展示を行った．
 今回の DPSワークショップ2022 のポスター・デモセッションではこれに準じた動態展示を行う．
 
-\begin{figure}%%[H]
+%% \vspace*{-1zh}
+\begin{figure}[h]
 \centering
-\includegraphics[width=6cm]{figspics/RaspberryWorkbench2.jpg}
+%%\includegraphics[width=5cm]{figspics/henoheno.jpeg}
+\includegraphics[width=6cm]{figspics/RaspberryWorkbench2.png}
+%% \includegraphics[width=6.5cm]{figspics/RaspberryWorkbench2.jpg}
 \caption{ものづくりイベントにおける{RaspberryWorkbench}（2019年10月27日撮影）}
 \label{RaspberryWorkbench}
 \end{figure}
+%% \vspace*{-1zh}
+
+
 
 今後の展開については以下の3つの方向がある．
 
