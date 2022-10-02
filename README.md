@@ -113,46 +113,39 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      │       ├──  old/
      │       └──  tmp/
      ├──  dpsws2022-3/
-     │   ├──  dpsws-latex-template/
+     │   ├──  misc/
+     │   │   ├──  dpsws-latex-template/
+     │   │   └──  dpsws-latex-template.zip
+     │   ├──  old/
+     │   │   └──  memo.txt
+     │   ├──  pLaTeX/
+     │   │   ├──  _main-utf8.tex
      │   │   ├──  bibsample.bib
-     │   │   ├──  dpsws-esample.pdf
-     │   │   ├──  dpsws-esample.tex
-     │   │   ├──  dpsws-jsample.pdf
-     │   │   ├──  dpsws-jsample.tex
+     │   │   ├──  desktop.ini
+     │   │   ├──  doit-wsl.sh
+     │   │   ├──  doit.sh
      │   │   ├──  dpsws.cls
      │   │   ├──  dpsws.sty
+     │   │   ├──  dpsws2022-RaspberryWorkbench.aux
+     │   │   ├──  dpsws2022-RaspberryWorkbench.dvi
+     │   │   ├──  dpsws2022-RaspberryWorkbench.log
+     │   │   ├──  dpsws2022-RaspberryWorkbench.pdf
+     │   │   ├──  dpsws2022-RaspberryWorkbench.tex
+     │   │   ├──  dpsws2022-RaspberryWorkbench.tex-20220925-2049
      │   │   ├──  ebibsample.bib
-     │   │   ├──  ipsjsort-e.bst
-     │   │   ├──  ipsjsort.bst
-     │   │   ├──  ipsjunsrt-e.bst
-     │   │   └──  ipsjunsrt.bst
-     │   ├──  dpsws-latex-template.zip
-     │   ├──  old/
-     │   │   └──  00README.txt
-     │   └──  pLaTeX/
-     │       ├──  _main-utf8.tex
-     │       ├──  bibsample.bib
-     │       ├──  desktop.ini
-     │       ├──  doit-wsl.sh
-     │       ├──  doit.sh
-     │       ├──  dpsws.cls
-     │       ├──  dpsws.sty
-     │       ├──  dpsws2022-RaspberryWorkbench.aux
-     │       ├──  dpsws2022-RaspberryWorkbench.dvi
-     │       ├──  dpsws2022-RaspberryWorkbench.log
-     │       ├──  dpsws2022-RaspberryWorkbench.pdf
-     │       ├──  dpsws2022-RaspberryWorkbench.tex
-     │       ├──  ebibsample.bib
-     │       ├──  figspics/
-     │       ├──  ipsj/
-     │       ├──  ipsj.cls -> ipsj/ipsj.cls
-     │       ├──  ipsjpref.sty -> ipsj/ipsjpref.sty
-     │       ├──  ipsjsort.bst -> ipsj/ipsjsort.bst
-     │       ├──  ipsjtech.sty -> ipsj/ipsjtech.sty
-     │       ├──  ipsjunsrt.bst -> ipsj/ipsjunsrt.bst
-     │       ├──  main.tex
-     │       ├──  main.tex-20220826-2355
-     │       └──  tmp/
+     │   │   ├──  figspics/
+     │   │   ├──  ipsj/
+     │   │   ├──  ipsj.cls -> ipsj/ipsj.cls
+     │   │   ├──  ipsjpref.sty -> ipsj/ipsjpref.sty
+     │   │   ├──  ipsjsort.bst -> ipsj/ipsjsort.bst
+     │   │   ├──  ipsjtech.sty -> ipsj/ipsjtech.sty
+     │   │   ├──  ipsjunsrt.bst -> ipsj/ipsjunsrt.bst
+     │   │   ├──  main.tex
+     │   │   ├──  main.tex-20220826-2355
+     │   │   ├──  main.tex-20220925-2049
+     │   │   ├──  main.tex-20220926-0850
+     │   │   └──  tmp/
+     │   └──  sigjouto.pdf
      ├──  dpsws2022-latest -> dpsws2022-3
      ├──  memo.txt
      ├──  misc/
@@ -163,7 +156,7 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      └──  tmp/
          └──  README.md
      
-     42 directories, 117 files (Mon Sep 26 06:18:07 JST 2022)
+     43 directories, 109 files (Sun Oct  2 11:00:09 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/rZone--RaspberryWorkbench--DPSWS2022
