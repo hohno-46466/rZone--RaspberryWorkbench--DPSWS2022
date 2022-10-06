@@ -1,0 +1,59 @@
+%%
+
+%\documentclass[submit,techreq]{ipsj}
+%\documentclass[techrep,submit]{ipsj}
+
+\documentclass[submit,techreq,noauthor]{dpsws}
+
+% for bibtex
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+% footyear
+\setcounter{巻数}{63} %vol55=2014
+
+%\usepackage[dvips]{graphicx}
+\usepackage[dvipdfmx]{graphicx}
+%\usepackage{latexsym}
+\usepackage{url}
+\usepackage{multirow}
+%\usepackage{booktabs}
+\usepackage{amsmath}
+% \usepackage{comment}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{color}
+%
+%\def\verbatimbaselineskip{1mm}
+%\newenvironment{minilinespace}{
+% \verbatimbaselineskip = 1mm
+%}
+
+%% \renewcommand{\baselinestretch}{0.98}
+
+%% ---------------------------------------------------------
+
+\makeatletter
+\newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
+  {1.0\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+  {.1\Cvs \@plus.3\Cdp}%
+  {\reset@font\sffamily\normalsize}
+}
+\makeatother
+\setcounter{secnumdepth}{4}
+
+%% ---------------------------------------------------------
+
+
+\begin{document}
+
+\input{_main-utf8.tex}
+%%\input{sample.tex}
+
+%%\bibliographystyle{junsrt}
+%% \bibliographystyle{ipsjunsrt}
+%% \bibliography{reference,rfc}
+
+\end{document}
+
+%% ---------------------------------------------------------
