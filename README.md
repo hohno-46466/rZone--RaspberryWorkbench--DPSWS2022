@@ -112,7 +112,8 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      │       ├──  main.tex-20220826-2355
      │       ├──  old/
      │       └──  tmp/
-     ├──  dpsws2022-3/
+     ├──  dpsws2022-3 -> dpsws2022-3-20220928-1809
+     ├──  dpsws2022-3-20220928-1809/
      │   ├──  misc/
      │   │   ├──  dpsws-latex-template/
      │   │   └──  dpsws-latex-template.zip
@@ -146,6 +147,41 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      │   │   ├──  main.tex-20220926-0850
      │   │   └──  tmp/
      │   └──  sigjouto.pdf
+     ├──  dpsws2022-3-20220928-1809-bakcup/
+     │   ├──  misc/
+     │   │   ├──  dpsws-latex-template/
+     │   │   └──  dpsws-latex-template.zip
+     │   ├──  old/
+     │   │   └──  memo.txt
+     │   ├──  pLaTeX/
+     │   │   ├──  _main-utf8.tex
+     │   │   ├──  bibsample.bib
+     │   │   ├──  desktop.ini
+     │   │   ├──  doit-wsl.sh
+     │   │   ├──  doit.sh
+     │   │   ├──  dpsws.cls
+     │   │   ├──  dpsws.sty
+     │   │   ├──  dpsws2022-RaspberryWorkbench.aux
+     │   │   ├──  dpsws2022-RaspberryWorkbench.dvi
+     │   │   ├──  dpsws2022-RaspberryWorkbench.log
+     │   │   ├──  dpsws2022-RaspberryWorkbench.pdf
+     │   │   ├──  dpsws2022-RaspberryWorkbench.tex
+     │   │   ├──  dpsws2022-RaspberryWorkbench.tex-20220925-2049
+     │   │   ├──  ebibsample.bib
+     │   │   ├──  figspics/
+     │   │   ├──  ipsj/
+     │   │   ├──  ipsj.cls -> ipsj/ipsj.cls
+     │   │   ├──  ipsjpref.sty -> ipsj/ipsjpref.sty
+     │   │   ├──  ipsjsort.bst -> ipsj/ipsjsort.bst
+     │   │   ├──  ipsjtech.sty -> ipsj/ipsjtech.sty
+     │   │   ├──  ipsjunsrt.bst -> ipsj/ipsjunsrt.bst
+     │   │   ├──  main.tex
+     │   │   ├──  main.tex-20220826-2355
+     │   │   ├──  main.tex-20220925-2049
+     │   │   ├──  main.tex-20220926-0850
+     │   │   └──  tmp/
+     │   └──  sigjouto.pdf
+     ├──  dpsws2022-final -> dpsws2022-3
      ├──  dpsws2022-latest -> dpsws2022-3
      ├──  memo.txt
      ├──  misc/
@@ -156,7 +192,7 @@ Demo/Poster Session on Raspberry Workbench  in DPS workshop 2022
      └──  tmp/
          └──  README.md
      
-     43 directories, 109 files (Sun Oct  2 11:00:09 JST 2022)
+     53 directories, 135 files (Sat Oct  8 21:41:35 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/rZone--RaspberryWorkbench--DPSWS2022
