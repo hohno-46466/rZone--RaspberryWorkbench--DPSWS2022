@@ -1,4 +1,4 @@
-# Last updated: Wed Jul 17 09:18:57 JST 2019
+# Last update: Wed Jul 17 09:18:57 JST 2019
 
 Read main.tex and doit.sh
 
